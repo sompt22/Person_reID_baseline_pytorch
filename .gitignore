@@ -1,4 +1,5 @@
 # Don't track content of these folders
+data/*
 outputs/
 model/*
 logs/
@@ -11,6 +12,7 @@ GPU-Re-Ranking/extension/propagation/dist
 
 # But not 
 !model/.gitkeep
+!data/.gitkeep
 
 # Compiled source #
 ###################
