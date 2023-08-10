@@ -1,7 +1,9 @@
 # Don't track content of these folders
+.vscode
 data/*
 outputs/
 model/*
+model_onnx/*
 logs/
 __pycache__/
 core
@@ -13,6 +15,7 @@ GPU-Re-Ranking/extension/propagation/dist
 # But not 
 !model/.gitkeep
 !data/.gitkeep
+!model/.gitkeep
 
 # Compiled source #
 ###################
