@@ -115,13 +115,13 @@ transform_train_list = [
         transforms.RandomCrop((h, w)),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        transforms.Normalize([0.485], [0.229])
         ]
 
 transform_val_list = [
         transforms.Resize(size=(h, w),interpolation=3), #Image.BICUBIC
         transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        transforms.Normalize([0.485], [0.229])
         ]
 
 if opt.PCB:
@@ -138,7 +138,7 @@ if opt.PCB:
         ]
 
 if opt.erasing_p>0:
-    transform_train_list = transform_train_list +  [RandomErasing(probability = opt.erasing_p, mean=[0.0, 0.0, 0.0])]
+    transform_train_list = transform_train_list +  [RandomErasing(probability = opt.erasing_p, mean=[0.0])]
 
 if opt.color_jitter:
     transform_train_list = [transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0)] + transform_train_list

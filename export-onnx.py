@@ -166,7 +166,7 @@ model = fuse_all_conv_bn(model)
 print(model)
 
 
-input_img = torch.ones((1,3,256,128))
+input_img = torch.ones((1,1,256,128))
 if use_gpu:
     input_img = input_img.cuda()
 output = model(input_img)
@@ -178,16 +178,16 @@ def export(model,input_size=None, save_folder="./"):
             with open(model_name.replace(".onnx", ".onnx.pp"), 'w') as f:
                 f.write('set_size = {} x {}\n'.format(*sz))
                 #f.write('keep_aspect_ratio = 0\n')
-                f.write('set_mean_rgb = 123.675, 116.28, 103.53\n')
-                f.write('set_stdv_rgb = 58.395, 57.12, 57.375\n')
+                f.write('set_mean_rgb = 123.675\n')
+                f.write('set_stdv_rgb = 58\n')
                 f.write('set_bgr_to_rgb = 1\n')
         def save_io(model_name, io_names):
             with open(model_name.replace(".onnx", ".onnx.io"), 'w') as f:
-                f.write(' '.join(io_names['i']) + "(float:1-4-8x3x256x128)" + '\n')
+                f.write(' '.join(io_names['i']) + "(float:1-4-8x1x256x128)" + '\n')
                 f.write(' '.join(io_names['o']) + '\n')
         model.eval()
         model.to(torch.device("cpu"))
-        input_shape = (1, 3, *input_size)
+        input_shape = (1, 1, *input_size)
         model_save_path = f"{save_folder}pedestrian_reid_{input_size[0]}x{input_size[1]}.onnx"
         torch.onnx.export(model, torch.randn(input_shape), model_save_path, verbose=True,
                           input_names=["images"], output_names=["feats"], dynamic_axes={"images": {0: "batch_size"},

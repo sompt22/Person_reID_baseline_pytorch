@@ -82,6 +82,7 @@ class ft_net(nn.Module):
             model_ft.layer4[0].downsample[0].stride = (1,1)
             model_ft.layer4[0].conv2.stride = (1,1)
         model_ft.avgpool = nn.AdaptiveAvgPool2d((1,1))
+        model_ft.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3,bias=False)
         self.model = model_ft
         self.circle = circle
         self.classifier = ClassBlock(2048, class_num, droprate, linear=linear_num, return_f = circle)
