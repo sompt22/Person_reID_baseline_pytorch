@@ -68,6 +68,9 @@ class ClassBlock(nn.Module):
         else:
             x = self.classifier(x)
             return x
+    def extract_features(self, x):
+        x = self.add_block(x)
+        return x
 
 # Define the ResNet50-based Model
 class ft_net(nn.Module):
@@ -100,6 +103,20 @@ class ft_net(nn.Module):
         x = self.classifier(x)
         return x
 
+    def extract_features(self, x):
+        # This method extracts features without the final classifier layer
+        x = self.model.conv1(x)
+        x = self.model.bn1(x)
+        x = self.model.relu(x)
+        x = self.model.maxpool(x)
+        x = self.model.layer1(x)
+        x = self.model.layer2(x)
+        x = self.model.layer3(x)
+        x = self.model.layer4(x)
+        x = self.model.avgpool(x)
+        x = x.view(x.size(0), x.size(1))
+        x = self.classifier.extract_features(x)
+        return x
 
 # Define the swin_base_patch4_window7_224 Model
 # pytorch > 1.6
