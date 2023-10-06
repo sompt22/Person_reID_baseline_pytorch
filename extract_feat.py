@@ -69,6 +69,7 @@ def main():
     for annotation in annotations['annotations']:
         image_id = annotation['image_id']
         file_name = os.path.join(data_dir, annotations['images'][image_id - 1]['file_name'])  # Find the corresponding image file
+        print(file_name)
         bbox = annotation['bbox']  # Extract bounding box coordinates [x, y, width, height]
         features = extract_features(file_name, bbox, model)
 
@@ -76,7 +77,7 @@ def main():
         annotation['embedding'] = features.tolist()
 
     # Save the updated annotations back to the JSON file
-    updated_annotation_file = '/home/fatih/phd/mot_dataset/SOMPT22/annotations/updated_training.json'
+    updated_annotation_file = '/home/fatih/phd/mot_dataset/SOMPT22/images/annotations/updated_training.json'
     with open(updated_annotation_file, 'w') as f:
         json.dump(annotations, f)
 
