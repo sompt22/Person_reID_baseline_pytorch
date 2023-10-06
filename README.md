@@ -12,8 +12,8 @@ A tiny, friendly, strong baseline code for Object-reID (based on [pytorch](https
 
 - **Friendly.** You may use the off-the-shelf options to apply many state-of-the-art tricks in one line.
 Besides, if you are new to object re-ID, you may check out our **[Tutorial](https://github.com/layumi/Person_reID_baseline_pytorch/tree/master/tutorial)** first (8 min read) :+1: .
-![](https://github.com/layumi/Person_reID_baseline_pytorch/blob/master/show.png)
-![](https://github.com/layumi/Person_reID_baseline_pytorch/blob/master/show-cub.jpg)
+![Person ReID Demo](https://github.com/layumi/Person_reID_baseline_pytorch/blob/master/show.png)
+
 Share to
     <!-- Facebook -->
     <a href="http://www.facebook.com/sharer.php?u=https://github.com/layumi/Person_reID_baseline_pytorch/" target="_blank">
@@ -91,10 +91,12 @@ Different framework need to be tuned in a different way.
 
 ## Some News
 
+**12 Aug 2023** Large Person Langauge Model is currently available at [Here](https://github.com/Shuyu-XJTU/APTM)![GitHub stars](https://img.shields.io/github/stars/Shuyu-XJTU/APTM.svg?style=flat&label=Star) accepted by ACM MM'23. You are welcomed to check it.
+
 **19 Mar 2023** We host a special session on IEEE Intelligent Transportation Systems Conference (ITSC), covering the object re-identification & point cloud topic. The paper ddl is by May 15, 2023 and the paper notification is at June 30, 2023. Please select the session code ``w7r4a'' during submission. More details can be found at [Special Session Website](https://2023.ieee-itsc.org/wp-content/uploads/2023/03/IEEE-ITSC-2023-Special-Session-Proposal-Safe-Critical-Scenario-Understanding-in-Intelligent-Transportation-Systems-SCSU-ITS.pdf).  
 
-**9 Mar 2023** Market-1501 is in 3D. Please check our single 2D to 3D reconstruction work  https://github.com/layumi/3D-Magic-Mirror.
-![](https://github.com/layumi/3D-Magic-Mirror/raw/master/doc/rainbow_github.gif)
+**9 Mar 2023** Market-1501 is in 3D. Please check our single 2D to 3D reconstruction work  https://github.com/layumi/3D-Magic-Mirror ![GitHub stars](https://img.shields.io/github/stars/layumi/3D-Magic-Mirror.svg?style=flat&label=Star).
+![Magic Mirror](https://github.com/layumi/3D-Magic-Mirror/raw/master/doc/rainbow_github.gif)
 
 
 <details>
@@ -231,7 +233,7 @@ The download link is [Here](https://drive.google.com/open?id=1XVEYb0TN2SbBYOqf8S
 | [ResNet-50-ibn] | 89.13% | 73.40% | `python train.py --train_all --name res-ibn --ibn` |
 | [DenseNet-121] | 90.17% | 74.02% | `python train.py --name ft_net_dense --use_dense --train_all` |
 | [DenseNet-121 (Circle)] | 91.00% | 76.54% | `python train.py --name ft_net_dense_circle_w5 --circle --use_dense --train_all --warm_epoch 5` |
-| [HRNet-18] | 90.83% | 76.65% |  ` python train.py --use_hr --name hr18; python test.py --name hr18` |
+| [HRNet-18] | 90.83% | 76.65% |  `python train.py --use_hr --name hr18; python test.py --name hr18` |
 | [PCB] | 92.64% | 77.47% | `python train.py --name PCB --PCB --train_all --lr 0.02` |
 | [PCB + DG] | 92.70% | 78.31% | `python train.py --name PCB_DG --PCB --train_all --lr 0.02 --DG; python test.py --name PCB_DG` |
 | [ResNet-50 (all tricks)] | 91.83% | 78.32% | `python train.py --warm_epoch 5 --stride 1 --erasing_p 0.5 --batchsize 8 --lr 0.02 --name warm5_s1_b8_lr2_p0.5` |
@@ -252,6 +254,7 @@ The download link is [Here](https://drive.google.com/open?id=1XVEYb0TN2SbBYOqf8S
 ### Different Losses 
    
 I do not optimize the hyper-parameters. You are free to tune them for better performance.
+
 |Methods | Rank@1 | mAP| Reference|
 | -------- | ----- | ---- | ---- |
 | CE | 92.01% | 79.31% | `python train.py --warm_epoch 5 --stride 1 --erasing_p 0.5 --batchsize 32 --lr 0.08 --name warm5_s1_b32_lr8_p0.5_100 --total 100 ; python test.py  --name  warm5_s1_b32_lr8_p0.5_100`|
